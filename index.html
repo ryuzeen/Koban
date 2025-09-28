@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koban 小判 - Aumente sua Experiência em Ananta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        .card-border-glow {
+            position: relative;
+            border: 1px solid #222;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .card-border-glow:hover {
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #fff;
+            color: #fff;
+            transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+            z-index: 1;
+        }
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            transition: left 0.4s ease-in-out;
+            z-index: -1;
+        }
+        .btn-primary:hover {
+            color: #0a0a0a;
+        }
+        .btn-primary:hover:before {
+            left: 0;
+        }
+        
+        /* Animação do título "glitch" */
+        .glitch {
+            position: relative;
+            font-size: 5rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.1em;
+            animation: glitch-skew 1s infinite linear alternate-reverse;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ffffff;
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #ffffff, 2px 2px #ffffff;
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(15% 0 86% 0); }
+            20% { clip-path: inset(55% 0 26% 0); }
+            40% { clip-path: inset(30% 0 50% 0); }
+            60% { clip-path: inset(80% 0 10% 0); }
+            80% { clip-path: inset(45% 0 45% 0); }
+            100% { clip-path: inset(90% 0 5% 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(78% 0 10% 0); }
+            20% { clip-path: inset(1% 0 80% 0); }
+            40% { clip-path: inset(60% 0 30% 0); }
+            60% { clip-path: inset(30% 0 40% 0); }
+            80% { clip-path: inset(85% 0 5% 0); }
+            100% { clip-path: inset(50% 0 20% 0); }
+        }
+        @keyframes glitch-skew {
+            0% { transform: skewX(0deg); }
+            10% { transform: skewX(0); }
+            50% { transform: skewX(0); }
+            51% { transform: skewX(3deg); }
+            55% { transform: skewX(-3deg); }
+            60% { transform: skewX(0); }
+            100% { transform: skewX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Estilos do Overlay do Discord */
+        #discord-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            backdrop-filter: blur(5px);
+        }
+        #discord-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .overlay-content {
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+        }
+        #discord-overlay.visible .overlay-content {
+            transform: scale(1);
+        }
+        #close-overlay-btn {
+            position: absolute;
+            top: 0rem;
+            right: 0rem;
+            color: #888;
+            background: transparent;
+            border: none;
+            font-size: 2.5rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+        #close-overlay-btn:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0a]">
+
+    <!-- Cabeçalho -->
+    <header class="absolute top-0 left-0 right-0 z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white text-glow">KOBAN 小判</h1>
+            <nav>
+                <a href="#features" class="text-gray-300 hover:text-white transition-colors">Recursos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Principal (Hero) -->
+        <section class="min-h-screen flex items-center justify-center text-center px-4 bg-grid">
+            <div class="max-w-4xl">
+                <h2 data-text="KOBAN 小判" class="glitch mb-4">KOBAN 小判</h2>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-400">A ferramenta definitiva para desbloquear seu verdadeiro potencial em Ananta.</p>
+                <a href="#download" class="btn-primary inline-block text-lg font-bold py-3 px-12 tracking-widest uppercase z-0">
+                    Download
+                </a>
+            </div>
+        </section>
+
+        <!-- Seção de Recursos -->
+        <section id="features" class="py-20 sm:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-white text-glow">Recursos Principais</h3>
+                    <p class="text-gray-400 mt-2">Leve sua jogabilidade a um novo patamar.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1: ESP -->
+                    <div class="bg-black/20 p-8 rounded-lg card-border-glow backdrop-blur-sm">
+                        <div class="flex items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-8 h-8 mr-4"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <h4 class="text-2xl font-bold text-white">ESP</h4>
+                        </div>
+                        <p class="text-gray-400">Visualize inimigos e objetos importantes através de paredes. Tenha total conhecimento tático do campo de batalha.</p>
+                    </div>
+
+                    <!-- Card 2: Aimbot -->
+                    <div class="bg-black/20 p-8 rounded-lg card-border-glow backdrop-blur-sm">
+                        <div class="flex items-center mb-4">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-8 h-8 mr-4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="22" x2="12" y2="18"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+                            <h4 class="text-2xl font-bold text-white">Aimbot</h4>
+                        </div>
+                        <p class="text-gray-400">Melhore sua precisão com a assistência de mira. Configure para um auxílio sutil ou um travamento de alvo preciso.</p>
+                    </div>
+
+                    <!-- Card 3: Fov Changer -->
+                    <div class="bg-black/20 p-8 rounded-lg card-border-glow backdrop-blur-sm">
+                        <div class="flex items-center mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-8 h-8 mr-4"><path d="M1.1 6.5l.9-2.8c.2-.7.8-1.1 1.5-1.1h1.7c.6 0 1.2.3 1.5.8L8 5.1"/><path d="M22.9 6.5l-.9-2.8c-.2-.7-.8-1.1-1.5-1.1h-1.7c-.6 0-1.2.3-1.5.8L16 5.1"/><path d="m16 19-1.5-1.5"/><path d="M17.4 12H22"/><path d="M2 12h4.6"/><path d="M8 19l1.5-1.5"/><path d="M12 2.6c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"/><path d="M12 17.4a5.4 5.4 0 1 0 0-10.8 5.4 5.4 0 0 0 0 10.8z"/></svg>
+                            <h4 class="text-2xl font-bold text-white">Fov Changer</h4>
+                        </div>
+                        <p class="text-gray-400">Ajuste seu campo de visão (FOV) para uma perspectiva mais ampla, ideal para identificar oponentes nos cantos da tela.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Download -->
+        <section id="download" class="py-20 sm:py-32 bg-black/30">
+            <div class="container mx-auto px-6 text-center">
+                 <h3 class="text-4xl font-bold text-white text-glow">Pronto para começar?</h3>
+                 <p class="text-gray-400 mt-4 mb-8 max-w-xl mx-auto">O download está disponível em nosso servidor do Discord. Junte-se à comunidade para baixar e ficar por dentro das novidades.</p>
+                 <a href="#" id="download-btn" class="btn-primary inline-block text-lg font-bold py-4 px-16 tracking-widest uppercase">
+                    Acessar o Discord
+                </a>
+                <p class="text-xs text-gray-500 mt-4">Versão 1.0.0 | Requer Windows 10 ou superior</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="border-t border-gray-900/50 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 Koban 小判. Este é um software de auxílio feito por fãs.</p>
+        </div>
+    </footer>
+
+    <!-- Overlay do Convite do Discord -->
+    <div id="discord-overlay">
+        <div class="overlay-content max-w-lg w-full bg-black/50 p-8 sm:p-12 rounded-lg card-border-glow">
+            <button id="close-overlay-btn" aria-label="Fechar">&times;</button>
+            <h3 class="text-3xl sm:text-4xl font-bold text-white text-glow mb-4">Junte-se à Comunidade</h3>
+            <p class="text-gray-400 mb-8">O download, atualizações e suporte para o Koban estão disponíveis exclusivamente em nosso servidor oficial do Discord.</p>
+            <!-- IMPORTANTE: Substitua o link abaixo pelo seu link de convite real do Discord -->
+            <a href="https://discord.gg/your-invite-link" target="_blank" class="btn-primary inline-block text-lg font-bold py-4 px-16 tracking-widest uppercase">
+                Entrar no Discord
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const downloadBtn = document.getElementById('download-btn');
+        const discordOverlay = document.getElementById('discord-overlay');
+        const closeOverlayBtn = document.getElementById('close-overlay-btn');
+
+        // Abre o overlay
+        downloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            discordOverlay.classList.add('visible');
+        });
+
+        // Fecha o overlay pelo botão 'X'
+        closeOverlayBtn.addEventListener('click', () => {
+            discordOverlay.classList.remove('visible');
+        });
+        
+        // Fecha o overlay clicando fora da caixa de conteúdo
+        discordOverlay.addEventListener('click', (e) => {
+            if (e.target === discordOverlay) {
+                discordOverlay.classList.remove('visible');
+            }
+        });
+
+        // Fecha o overlay com a tecla 'Escape'
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && discordOverlay.classList.contains('visible')) {
+                discordOverlay.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
+
