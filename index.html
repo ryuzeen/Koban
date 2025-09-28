@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koban 小判 - Aumente sua Experiência em Ananta</title>
+    <title>Koban 小判 - Enhance Your Ananta Experience</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -164,6 +164,10 @@
             color: #fff;
             transform: rotate(90deg);
         }
+        .lang-btn.active {
+            background-color: #fff;
+            color: #0a0a0a;
+        }
     </style>
 </head>
 <body class="bg-[#0a0a0a]">
@@ -172,8 +176,12 @@
     <header class="absolute top-0 left-0 right-0 z-10">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-white text-glow">KOBAN 小判</h1>
-            <nav>
-                <a href="#features" class="text-gray-300 hover:text-white transition-colors">Recursos</a>
+            <nav class="flex items-center space-x-4">
+                <a href="#features" class="text-gray-300 hover:text-white transition-colors" data-key="nav_features">Features</a>
+                 <div class="flex text-sm border border-gray-600 rounded-md">
+                    <button class="lang-btn text-gray-400 font-bold py-1 px-2" data-lang="pt">PT</button>
+                    <button class="lang-btn text-gray-400 font-bold py-1 px-2" data-lang="en">EN</button>
+                </div>
             </nav>
         </div>
     </header>
@@ -182,9 +190,9 @@
         <!-- Seção Principal (Hero) -->
         <section class="min-h-screen flex items-center justify-center text-center px-4 bg-grid">
             <div class="max-w-4xl">
-                <h2 data-text="KOBAN 小判" class="glitch mb-4">KOBAN 小判</h2>
-                <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-400">A ferramenta definitiva para desbloquear seu verdadeiro potencial em Ananta.</p>
-                <a href="#download" class="btn-primary inline-block text-lg font-bold py-3 px-12 tracking-widest uppercase z-0">
+                <h2 data-key="hero_title" data-text="KOBAN 小判" class="glitch mb-4">KOBAN 小判</h2>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-400" data-key="hero_subtitle">The ultimate tool to unlock your true potential in Ananta.</p>
+                <a href="#download" class="btn-primary inline-block text-lg font-bold py-3 px-12 tracking-widest uppercase z-0" data-key="hero_button">
                     Download
                 </a>
             </div>
@@ -194,8 +202,8 @@
         <section id="features" class="py-20 sm:py-32">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h3 class="text-4xl font-bold text-white text-glow">Recursos Principais</h3>
-                    <p class="text-gray-400 mt-2">Leve sua jogabilidade a um novo patamar.</p>
+                    <h3 class="text-4xl font-bold text-white text-glow" data-key="features_title">Main Features</h3>
+                    <p class="text-gray-400 mt-2" data-key="features_subtitle">Take your gameplay to the next level.</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -203,27 +211,27 @@
                     <div class="bg-black/20 p-8 rounded-lg card-border-glow backdrop-blur-sm">
                         <div class="flex items-center mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-8 h-8 mr-4"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                            <h4 class="text-2xl font-bold text-white">ESP</h4>
+                            <h4 class="text-2xl font-bold text-white" data-key="feature1_title">ESP</h4>
                         </div>
-                        <p class="text-gray-400">Visualize inimigos e objetos importantes através de paredes. Tenha total conhecimento tático do campo de batalha.</p>
+                        <p class="text-gray-400" data-key="feature1_desc">Visualize enemies and important objects through walls. Gain full tactical awareness of the battlefield.</p>
                     </div>
 
                     <!-- Card 2: Aimbot -->
                     <div class="bg-black/20 p-8 rounded-lg card-border-glow backdrop-blur-sm">
                         <div class="flex items-center mb-4">
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-8 h-8 mr-4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="22" x2="12" y2="18"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
-                            <h4 class="text-2xl font-bold text-white">Aimbot</h4>
+                            <h4 class="text-2xl font-bold text-white" data-key="feature2_title">Aimbot</h4>
                         </div>
-                        <p class="text-gray-400">Melhore sua precisão com a assistência de mira. Configure para um auxílio sutil ou um travamento de alvo preciso.</p>
+                        <p class="text-gray-400" data-key="feature2_desc">Improve your accuracy with aim assistance. Configure it for subtle help or precise target locking.</p>
                     </div>
 
                     <!-- Card 3: Fov Changer -->
                     <div class="bg-black/20 p-8 rounded-lg card-border-glow backdrop-blur-sm">
                         <div class="flex items-center mb-4">
                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-8 h-8 mr-4"><path d="M1.1 6.5l.9-2.8c.2-.7.8-1.1 1.5-1.1h1.7c.6 0 1.2.3 1.5.8L8 5.1"/><path d="M22.9 6.5l-.9-2.8c-.2-.7-.8-1.1-1.5-1.1h-1.7c-.6 0-1.2.3-1.5.8L16 5.1"/><path d="m16 19-1.5-1.5"/><path d="M17.4 12H22"/><path d="M2 12h4.6"/><path d="M8 19l1.5-1.5"/><path d="M12 2.6c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"/><path d="M12 17.4a5.4 5.4 0 1 0 0-10.8 5.4 5.4 0 0 0 0 10.8z"/></svg>
-                            <h4 class="text-2xl font-bold text-white">Fov Changer</h4>
+                            <h4 class="text-2xl font-bold text-white" data-key="feature3_title">Fov Changer</h4>
                         </div>
-                        <p class="text-gray-400">Ajuste seu campo de visão (FOV) para uma perspectiva mais ampla, ideal para identificar oponentes nos cantos da tela.</p>
+                        <p class="text-gray-400" data-key="feature3_desc">Adjust your field of view (FOV) for a wider perspective, ideal for spotting opponents in the corners of your screen.</p>
                     </div>
                 </div>
             </div>
@@ -232,12 +240,12 @@
         <!-- Seção de Download -->
         <section id="download" class="py-20 sm:py-32 bg-black/30">
             <div class="container mx-auto px-6 text-center">
-                 <h3 class="text-4xl font-bold text-white text-glow">Pronto para começar?</h3>
-                 <p class="text-gray-400 mt-4 mb-8 max-w-xl mx-auto">O download está disponível em nosso servidor do Discord. Junte-se à comunidade para baixar e ficar por dentro das novidades.</p>
-                 <a href="#" id="download-btn" class="btn-primary inline-block text-lg font-bold py-4 px-16 tracking-widest uppercase">
-                    Acessar o Discord
+                 <h3 class="text-4xl font-bold text-white text-glow" data-key="download_title">Ready to start?</h3>
+                 <p class="text-gray-400 mt-4 mb-8 max-w-xl mx-auto" data-key="download_subtitle">The download is available on our Discord server. Join the community to download and stay up to date with the latest news.</p>
+                 <a href="#" id="download-btn" class="btn-primary inline-block text-lg font-bold py-4 px-16 tracking-widest uppercase" data-key="download_button">
+                    Access Discord
                 </a>
-                <p class="text-xs text-gray-500 mt-4">Versão 1.0.0 | Requer Windows 10 ou superior</p>
+                <p class="text-xs text-gray-500 mt-4" data-key="download_info">Version 1.0.0 | Requires Windows 10 or higher</p>
             </div>
         </section>
     </main>
@@ -245,51 +253,134 @@
     <!-- Rodapé -->
     <footer class="border-t border-gray-900/50 py-8">
         <div class="container mx-auto px-6 text-center text-gray-500">
-            <p>&copy; 2025 Koban 小判. Este é um software de auxílio feito por fãs.</p>
+            <p data-key="footer_text">&copy; 2025 Koban 小判. This is a fan-made assistance software.</p>
         </div>
     </footer>
 
     <!-- Overlay do Convite do Discord -->
     <div id="discord-overlay">
         <div class="overlay-content max-w-lg w-full bg-black/50 p-8 sm:p-12 rounded-lg card-border-glow">
-            <button id="close-overlay-btn" aria-label="Fechar">&times;</button>
-            <h3 class="text-3xl sm:text-4xl font-bold text-white text-glow mb-4">Junte-se à Comunidade</h3>
-            <p class="text-gray-400 mb-8">O download, atualizações e suporte para o Koban estão disponíveis exclusivamente em nosso servidor oficial do Discord.</p>
-            <!-- IMPORTANTE: Substitua o link abaixo pelo seu link de convite real do Discord -->
-            <a href="https://discord.gg/your-invite-link" target="_blank" class="btn-primary inline-block text-lg font-bold py-4 px-16 tracking-widest uppercase">
-                Entrar no Discord
+            <button id="close-overlay-btn" aria-label="Close">&times;</button>
+            <h3 class="text-3xl sm:text-4xl font-bold text-white text-glow mb-4" data-key="overlay_title">Join the Community</h3>
+            <p class="text-gray-400 mb-8" data-key="overlay_subtitle">The download, updates, and support for Koban are exclusively available on our official Discord server.</p>
+            <a href="https://discord.gg/f6ThhbYcy6" target="_blank" class="btn-primary inline-block text-lg font-bold py-4 px-16 tracking-widest uppercase" data-key="overlay_button">
+                Join Discord
             </a>
         </div>
     </div>
 
     <script>
-        const downloadBtn = document.getElementById('download-btn');
-        const discordOverlay = document.getElementById('discord-overlay');
-        const closeOverlayBtn = document.getElementById('close-overlay-btn');
+        document.addEventListener('DOMContentLoaded', () => {
+            const downloadBtn = document.getElementById('download-btn');
+            const discordOverlay = document.getElementById('discord-overlay');
+            const closeOverlayBtn = document.getElementById('close-overlay-btn');
 
-        // Abre o overlay
-        downloadBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            discordOverlay.classList.add('visible');
-        });
+            // Funções do Overlay
+            const openOverlay = () => discordOverlay.classList.add('visible');
+            const closeOverlay = () => discordOverlay.classList.remove('visible');
 
-        // Fecha o overlay pelo botão 'X'
-        closeOverlayBtn.addEventListener('click', () => {
-            discordOverlay.classList.remove('visible');
-        });
-        
-        // Fecha o overlay clicando fora da caixa de conteúdo
-        discordOverlay.addEventListener('click', (e) => {
-            if (e.target === discordOverlay) {
-                discordOverlay.classList.remove('visible');
-            }
-        });
+            downloadBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openOverlay();
+            });
+            closeOverlayBtn.addEventListener('click', closeOverlay);
+            discordOverlay.addEventListener('click', (e) => {
+                if (e.target === discordOverlay) closeOverlay();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && discordOverlay.classList.contains('visible')) {
+                    closeOverlay();
+                }
+            });
 
-        // Fecha o overlay com a tecla 'Escape'
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && discordOverlay.classList.contains('visible')) {
-                discordOverlay.classList.remove('visible');
-            }
+            // Lógica de Tradução
+            const translations = {
+                'pt': {
+                    'page_title': 'Koban 小判 - Aumente sua Experiência em Ananta',
+                    'nav_features': 'Recursos',
+                    'hero_title': 'KOBAN 小判',
+                    'hero_subtitle': 'A ferramenta definitiva para desbloquear seu verdadeiro potencial em Ananta.',
+                    'hero_button': 'Download',
+                    'features_title': 'Recursos Principais',
+                    'features_subtitle': 'Leve sua jogabilidade a um novo patamar.',
+                    'feature1_title': 'ESP',
+                    'feature1_desc': 'Visualize inimigos e objetos importantes através de paredes. Tenha total conhecimento tático do campo de batalha.',
+                    'feature2_title': 'Aimbot',
+                    'feature2_desc': 'Melhore sua precisão com a assistência de mira. Configure para um auxílio sutil ou um travamento de alvo preciso.',
+                    'feature3_title': 'Fov Changer',
+                    'feature3_desc': 'Ajuste seu campo de visão (FOV) para uma perspectiva mais ampla, ideal para identificar oponentes nos cantos da tela.',
+                    'download_title': 'Pronto para começar?',
+                    'download_subtitle': 'O download está disponível em nosso servidor do Discord. Junte-se à comunidade para baixar e ficar por dentro das novidades.',
+                    'download_button': 'Acessar o Discord',
+                    'download_info': 'Versão 1.0.0 | Requer Windows 10 ou superior',
+                    'footer_text': '&copy; 2025 Koban 小判. Este é um software de auxílio feito por fãs.',
+                    'overlay_title': 'Junte-se à Comunidade',
+                    'overlay_subtitle': 'O download, atualizações e suporte para o Koban estão disponíveis exclusivamente em nosso servidor oficial do Discord.',
+                    'overlay_button': 'Entrar no Discord'
+                },
+                'en': {
+                    'page_title': 'Koban 小判 - Enhance Your Ananta Experience',
+                    'nav_features': 'Features',
+                    'hero_title': 'KOBAN 小判',
+                    'hero_subtitle': 'The ultimate tool to unlock your true potential in Ananta.',
+                    'hero_button': 'Download',
+                    'features_title': 'Main Features',
+                    'features_subtitle': 'Take your gameplay to the next level.',
+                    'feature1_title': 'ESP',
+                    'feature1_desc': 'Visualize enemies and important objects through walls. Gain full tactical awareness of the battlefield.',
+                    'feature2_title': 'Aimbot',
+                    'feature2_desc': 'Improve your accuracy with aim assistance. Configure it for subtle help or precise target locking.',
+                    'feature3_title': 'Fov Changer',
+                    'feature3_desc': 'Adjust your field of view (FOV) for a wider perspective, ideal for spotting opponents in the corners of your screen.',
+                    'download_title': 'Ready to start?',
+                    'download_subtitle': 'The download is available on our Discord server. Join the community to download and stay up to date with the latest news.',
+                    'download_button': 'Access Discord',
+                    'download_info': 'Version 1.0.0 | Requires Windows 10 or higher',
+                    'footer_text': '&copy; 2025 Koban 小判. This is a fan-made assistance software.',
+                    'overlay_title': 'Join the Community',
+                    'overlay_subtitle': 'The download, updates, and support for Koban are exclusively available on our official Discord server.',
+                    'overlay_button': 'Join Discord'
+                }
+            };
+
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const glitchElement = document.querySelector('.glitch');
+
+            const setLanguage = (lang) => {
+                if (!translations[lang]) return;
+                
+                document.documentElement.lang = lang;
+
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                
+                if (glitchElement) {
+                    const key = glitchElement.getAttribute('data-key');
+                    if (translations[lang][key]) {
+                        glitchElement.setAttribute('data-text', translations[lang][key]);
+                    }
+                }
+
+                document.title = translations[lang].page_title;
+
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+            };
+
+            langButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const lang = button.dataset.lang;
+                    setLanguage(lang);
+                });
+            });
+
+            // Define o idioma padrão ao carregar a página
+            setLanguage('en');
         });
     </script>
 </body>
