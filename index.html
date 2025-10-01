@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naty Store - Comunicado</title>
+    <title>Koban 小判 - Enhance Your Ananta Experience</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111827; /* bg-gray-900 */
-            /* Efeito de fundo gradiente sutil */
-            background-image: radial-gradient(circle at top, rgba(236, 72, 153, 0.1), transparent 50%),
-                              radial-gradient(circle at bottom left, rgba(129, 140, 248, 0.1), transparent 60%);
-        }
-        .btn-link {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        .btn-link:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Estilos do botão Koban */
-        .btn-koban {
             font-family: 'Share Tech Mono', monospace;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        .card-border-glow {
+            position: relative;
+            border: 1px solid #222;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .card-border-glow:hover {
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        .btn-primary {
             position: relative;
             overflow: hidden;
             border: 1px solid #fff;
             color: #fff;
-            background-color: #0a0a0a; /* Fundo preto */
-            transition: color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
             z-index: 1;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
-        .btn-koban:before {
+        .btn-primary:before {
             content: '';
             position: absolute;
             top: 0;
@@ -47,55 +45,42 @@
             transition: left 0.4s ease-in-out;
             z-index: -1;
         }
-        .btn-koban:hover {
+        .btn-primary:hover {
             color: #0a0a0a;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Borda brilhante */
         }
-        .btn-koban:hover:before {
+        .btn-primary:hover:before {
             left: 0;
         }
-
-        /* Animação do texto "glitch" */
-        .glitch-text {
+        
+        /* Animação do título "glitch" */
+        .glitch {
             position: relative;
-            display: inline-block;
+            font-size: 5rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.1em;
             animation: glitch-skew 1s infinite linear alternate-reverse;
         }
-        .glitch-text::before,
-        .glitch-text::after {
+        .glitch::before,
+        .glitch::after {
             content: attr(data-text);
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
             background: #0a0a0a;
-            color: #fff;
-            transition: background 0.4s ease-in-out, color 0.4s ease-in-out;
+            overflow: hidden;
         }
-        .btn-koban:hover .glitch-text::before,
-        .btn-koban:hover .glitch-text::after {
-             background: #fff;
-             color: #0a0a0a;
-        }
-        
-        .glitch-text::before {
+        .glitch::before {
             left: 2px;
             text-shadow: -2px 0 #ffffff;
             animation: glitch-anim-1 2s infinite linear alternate-reverse;
         }
-         .btn-koban:hover .glitch-text::before {
-             text-shadow: -2px 0 #0a0a0a;
-        }
-
-        .glitch-text::after {
+        .glitch::after {
             left: -2px;
             text-shadow: -2px 0 #ffffff, 2px 2px #ffffff;
             animation: glitch-anim-2 2s infinite linear alternate-reverse;
-        }
-        .btn-koban:hover .glitch-text::after {
-            text-shadow: -2px 0 #0a0a0a, 2px 2px #0a0a0a;
         }
 
         @keyframes glitch-anim-1 {
@@ -118,66 +103,285 @@
             0% { transform: skewX(0deg); }
             10% { transform: skewX(0); }
             50% { transform: skewX(0); }
-            51% { transform: skewX(1deg); }
-            55% { transform: skewX(-1deg); }
+            51% { transform: skewX(3deg); }
+            55% { transform: skewX(-3deg); }
             60% { transform: skewX(0); }
             100% { transform: skewX(0); }
         }
+
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Estilos do Overlay do Discord */
+        #discord-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            backdrop-filter: blur(5px);
+        }
+        #discord-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .overlay-content {
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+        }
+        #discord-overlay.visible .overlay-content {
+            transform: scale(1);
+        }
+        #close-overlay-btn {
+            position: absolute;
+            top: 0rem;
+            right: 0rem;
+            color: #888;
+            background: transparent;
+            border: none;
+            font-size: 2.5rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+        #close-overlay-btn:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+        .lang-btn.active {
+            background-color: #fff;
+            color: #0a0a0a;
+        }
     </style>
 </head>
-<body class="text-white">
+<body class="bg-[#0a0a0a]">
 
-    <main class="min-h-screen flex flex-col items-center justify-center p-4">
-        
-        <div class="bg-gray-800/60 backdrop-blur-sm border border-gray-700 rounded-xl shadow-2xl p-8 max-w-2xl w-full text-center">
-
-            <!-- Ícone da Loja -->
-            <div class="flex justify-center mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-pink-400" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-            </div>
-
-            <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">Comunicado da <span class="text-pink-400">Naty Store</span></h1>
-            
-            <p class="text-gray-300 text-lg mb-8">
-                Agradeço a todos pelo apoio! Informo que as vendas foram encerradas por aqui, pois decidi focar em um novo projeto pessoal.
-            </p>
-
-            <div class="space-y-6">
-                <!-- Redirecionamento para o novo projeto -->
-                <div>
-                    <p class="text-gray-400 mb-3">Convido você a conhecer meu novo projeto:</p>
-                    <a href="https://ryuzeen.github.io/koban/" target="_blank" rel="noopener noreferrer" 
-                       class="btn-link btn-koban inline-block font-bold py-3 px-8 rounded-lg text-lg">
-                       Conhecer o Projeto <span class="glitch-text" data-text="KOBAN 小判">KOBAN 小判</span>
-                    </a>
+    <!-- Cabeçalho -->
+    <header class="absolute top-0 left-0 right-0 z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white text-glow">KOBAN 小判</h1>
+            <nav class="flex items-center space-x-4">
+                <a href="#features" class="text-gray-300 hover:text-white transition-colors" data-key="nav_features">Features</a>
+                 <div class="flex text-sm border border-gray-600 rounded-md">
+                    <button class="lang-btn text-gray-400 font-bold py-1 px-2" data-lang="pt">PT</button>
+                    <button class="lang-btn text-gray-400 font-bold py-1 px-2" data-lang="en">EN</button>
                 </div>
-                
-                <div class="w-full border-t border-gray-700 my-6"></div>
-
-                <!-- Redirecionamento para o novo vendedor -->
-                <div>
-                    <p class="text-gray-400 mb-3">Para continuar comprando os produtos com segurança, repassei as vendas para meu parceiro de confiança:</p>
-                    <a href="https://juaomais48.github.io/store" target="_blank" rel="noopener noreferrer"
-                       class="btn-link inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-lg text-lg">
-                       Ir para a loja do JuãoMais48
-                    </a>
-                </div>
-
-                <div class="w-full border-t border-gray-700 my-6"></div>
-
-                <!-- Seção do animal dançante -->
-                <div>
-                    <p class="text-gray-400 mb-4">Enquanto isso, relaxe vendo este animal dançando:</p>
-                    <img src="https://media1.tenor.com/m/0xbYfGtRmQIAAAAC/cat-party-rainbow.gif" alt="Gato dançando ao som de música" class="mx-auto rounded-lg shadow-lg w-48 h-48 object-cover border-2 border-gray-600">
-                </div>
-            </div>
-
+            </nav>
         </div>
+    </header>
 
+    <main>
+        <!-- Seção Principal (Hero) -->
+        <section class="min-h-screen flex items-center justify-center text-center px-4 bg-grid">
+            <div class="max-w-4xl">
+                <h2 data-key="hero_title" data-text="KOBAN 小判" class="glitch mb-4">KOBAN 小判</h2>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-400" data-key="hero_subtitle">The ultimate tool to unlock your true potential in Ananta.</p>
+                <a href="#download" class="btn-primary inline-block text-lg font-bold py-3 px-12 tracking-widest uppercase z-0" data-key="hero_button">
+                    Download
+                </a>
+            </div>
+        </section>
+
+        <!-- Seção de Recursos -->
+        <section id="features" class="py-20 sm:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-white text-glow" data-key="features_title">Main Features</h3>
+                    <p class="text-gray-400 mt-2" data-key="features_subtitle">Take your gameplay to the next level.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1: ESP -->
+                    <div class="bg-black/20 p-8 rounded-lg card-border-glow backdrop-blur-sm">
+                        <div class="flex items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-8 h-8 mr-4"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <h4 class="text-2xl font-bold text-white" data-key="feature1_title">ESP</h4>
+                        </div>
+                        <p class="text-gray-400" data-key="feature1_desc">Visualize enemies and important objects through walls. Gain full tactical awareness of the battlefield.</p>
+                    </div>
+
+                    <!-- Card 2: Aimbot -->
+                    <div class="bg-black/20 p-8 rounded-lg card-border-glow backdrop-blur-sm">
+                        <div class="flex items-center mb-4">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-8 h-8 mr-4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="22" x2="12" y2="18"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+                            <h4 class="text-2xl font-bold text-white" data-key="feature2_title">Aimbot</h4>
+                        </div>
+                        <p class="text-gray-400" data-key="feature2_desc">Improve your accuracy with aim assistance. Configure it for subtle help or precise target locking.</p>
+                    </div>
+
+                    <!-- Card 3: Fov Changer -->
+                    <div class="bg-black/20 p-8 rounded-lg card-border-glow backdrop-blur-sm">
+                        <div class="flex items-center mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-8 h-8 mr-4"><path d="M1.1 6.5l.9-2.8c.2-.7.8-1.1 1.5-1.1h1.7c.6 0 1.2.3 1.5.8L8 5.1"/><path d="M22.9 6.5l-.9-2.8c-.2-.7-.8-1.1-1.5-1.1h-1.7c-.6 0-1.2.3-1.5.8L16 5.1"/><path d="m16 19-1.5-1.5"/><path d="M17.4 12H22"/><path d="M2 12h4.6"/><path d="M8 19l1.5-1.5"/><path d="M12 2.6c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"/><path d="M12 17.4a5.4 5.4 0 1 0 0-10.8 5.4 5.4 0 0 0 0 10.8z"/></svg>
+                            <h4 class="text-2xl font-bold text-white" data-key="feature3_title">Fov Changer</h4>
+                        </div>
+                        <p class="text-gray-400" data-key="feature3_desc">Adjust your field of view (FOV) for a wider perspective, ideal for spotting opponents in the corners of your screen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Download -->
+        <section id="download" class="py-20 sm:py-32 bg-black/30">
+            <div class="container mx-auto px-6 text-center">
+                 <h3 class="text-4xl font-bold text-white text-glow" data-key="download_title">Ready to start?</h3>
+                 <p class="text-gray-400 mt-4 mb-8 max-w-xl mx-auto" data-key="download_subtitle">The download is available on our Discord server. Join the community to download and stay up to date with the latest news.</p>
+                 <a href="#" id="download-btn" class="btn-primary inline-block text-lg font-bold py-4 px-16 tracking-widest uppercase" data-key="download_button">
+                    Access Discord
+                </a>
+                <p class="text-xs text-gray-500 mt-4" data-key="download_info">Version 1.0.0 | Requires Windows 10 or higher</p>
+            </div>
+        </section>
     </main>
 
+    <!-- Rodapé -->
+    <footer class="border-t border-gray-900/50 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p data-key="footer_text">&copy; 2025 Koban 小判. This is a fan-made assistance software.</p>
+        </div>
+    </footer>
+
+    <!-- Overlay do Convite do Discord -->
+    <div id="discord-overlay">
+        <div class="overlay-content max-w-lg w-full bg-black/50 p-8 sm:p-12 rounded-lg card-border-glow">
+            <button id="close-overlay-btn" aria-label="Close">&times;</button>
+            <h3 class="text-3xl sm:text-4xl font-bold text-white text-glow mb-4" data-key="overlay_title">Join the Community</h3>
+            <p class="text-gray-400 mb-8" data-key="overlay_subtitle">The download, updates, and support for Koban are exclusively available on our official Discord server.</p>
+            <a href="https://discord.gg/f6ThhbYcy6" target="_blank" class="btn-primary inline-block text-lg font-bold py-4 px-16 tracking-widest uppercase" data-key="overlay_button">
+                Join Discord
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const downloadBtn = document.getElementById('download-btn');
+            const discordOverlay = document.getElementById('discord-overlay');
+            const closeOverlayBtn = document.getElementById('close-overlay-btn');
+
+            // Funções do Overlay
+            const openOverlay = () => discordOverlay.classList.add('visible');
+            const closeOverlay = () => discordOverlay.classList.remove('visible');
+
+            downloadBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openOverlay();
+            });
+            closeOverlayBtn.addEventListener('click', closeOverlay);
+            discordOverlay.addEventListener('click', (e) => {
+                if (e.target === discordOverlay) closeOverlay();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && discordOverlay.classList.contains('visible')) {
+                    closeOverlay();
+                }
+            });
+
+            // Lógica de Tradução
+            const translations = {
+                'pt': {
+                    'page_title': 'Koban 小判 - Aumente sua Experiência em Ananta',
+                    'nav_features': 'Recursos',
+                    'hero_title': 'KOBAN 小判',
+                    'hero_subtitle': 'A ferramenta definitiva para desbloquear seu verdadeiro potencial em Ananta.',
+                    'hero_button': 'Download',
+                    'features_title': 'Recursos Principais',
+                    'features_subtitle': 'Leve sua jogabilidade a um novo patamar.',
+                    'feature1_title': 'ESP',
+                    'feature1_desc': 'Visualize inimigos e objetos importantes através de paredes. Tenha total conhecimento tático do campo de batalha.',
+                    'feature2_title': 'Aimbot',
+                    'feature2_desc': 'Melhore sua precisão com a assistência de mira. Configure para um auxílio sutil ou um travamento de alvo preciso.',
+                    'feature3_title': 'Fov Changer',
+                    'feature3_desc': 'Ajuste seu campo de visão (FOV) para uma perspectiva mais ampla, ideal para identificar oponentes nos cantos da tela.',
+                    'download_title': 'Pronto para começar?',
+                    'download_subtitle': 'O download está disponível em nosso servidor do Discord. Junte-se à comunidade para baixar e ficar por dentro das novidades.',
+                    'download_button': 'Acessar o Discord',
+                    'download_info': 'Versão 1.0.0 | Requer Windows 10 ou superior',
+                    'footer_text': '&copy; 2025 Koban 小判. Este é um software de auxílio feito por fãs.',
+                    'overlay_title': 'Junte-se à Comunidade',
+                    'overlay_subtitle': 'O download, atualizações e suporte para o Koban estão disponíveis exclusivamente em nosso servidor oficial do Discord.',
+                    'overlay_button': 'Entrar no Discord'
+                },
+                'en': {
+                    'page_title': 'Koban 小判 - Enhance Your Ananta Experience',
+                    'nav_features': 'Features',
+                    'hero_title': 'KOBAN 小判',
+                    'hero_subtitle': 'The ultimate tool to unlock your true potential in Ananta.',
+                    'hero_button': 'Download',
+                    'features_title': 'Main Features',
+                    'features_subtitle': 'Take your gameplay to the next level.',
+                    'feature1_title': 'ESP',
+                    'feature1_desc': 'Visualize enemies and important objects through walls. Gain full tactical awareness of the battlefield.',
+                    'feature2_title': 'Aimbot',
+                    'feature2_desc': 'Improve your accuracy with aim assistance. Configure it for subtle help or precise target locking.',
+                    'feature3_title': 'Fov Changer',
+                    'feature3_desc': 'Adjust your field of view (FOV) for a wider perspective, ideal for spotting opponents in the corners of your screen.',
+                    'download_title': 'Ready to start?',
+                    'download_subtitle': 'The download is available on our Discord server. Join the community to download and stay up to date with the latest news.',
+                    'download_button': 'Access Discord',
+                    'download_info': 'Version 1.0.0 | Requires Windows 10 or higher',
+                    'footer_text': '&copy; 2025 Koban 小判. This is a fan-made assistance software.',
+                    'overlay_title': 'Join the Community',
+                    'overlay_subtitle': 'The download, updates, and support for Koban are exclusively available on our official Discord server.',
+                    'overlay_button': 'Join Discord'
+                }
+            };
+
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const glitchElement = document.querySelector('.glitch');
+
+            const setLanguage = (lang) => {
+                if (!translations[lang]) return;
+                
+                document.documentElement.lang = lang;
+
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                
+                if (glitchElement) {
+                    const key = glitchElement.getAttribute('data-key');
+                    if (translations[lang][key]) {
+                        glitchElement.setAttribute('data-text', translations[lang][key]);
+                    }
+                }
+
+                document.title = translations[lang].page_title;
+
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+            };
+
+            langButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const lang = button.dataset.lang;
+                    setLanguage(lang);
+                });
+            });
+
+            // Define o idioma padrão ao carregar a página
+            setLanguage('en');
+        });
+    </script>
 </body>
 </html>
-
