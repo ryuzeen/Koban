@@ -168,6 +168,40 @@
             background-color: #fff;
             color: #0a0a0a;
         }
+
+        /* Estilos do Perfil de Desenvolvedor */
+        .dev-profile-card {
+            background-color: #18191c; /* Cor de fundo do Discord */
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .dev-banner {
+            height: 90px;
+            background-color: #2c2f33; /* Cor do banner */
+        }
+        .dev-avatar-wrapper {
+            position: relative;
+            margin-top: -48px;
+            margin-left: 16px;
+        }
+        .dev-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 6px solid #18191c;
+        }
+        .status-dot {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            background-color: #3ba55d; /* Verde Online */
+            border-radius: 50%;
+            border: 4px solid #18191c;
+        }
+
     </style>
 </head>
 <body class="bg-[#0a0a0a]">
@@ -178,6 +212,7 @@
             <h1 class="text-2xl font-bold text-white text-glow">KOBAN 小判</h1>
             <nav class="flex items-center space-x-4">
                 <a href="#features" class="text-gray-300 hover:text-white transition-colors" data-key="nav_features">Features</a>
+                <a href="#devs" class="text-gray-300 hover:text-white transition-colors" data-key="nav_devs">Devs</a>
                  <div class="flex text-sm border border-gray-600 rounded-md">
                     <button class="lang-btn text-gray-400 font-bold py-1 px-2" data-lang="pt">PT</button>
                     <button class="lang-btn text-gray-400 font-bold py-1 px-2" data-lang="en">EN</button>
@@ -237,8 +272,62 @@
             </div>
         </section>
 
+        <!-- Seção dos Desenvolvedores -->
+        <section id="devs" class="py-20 sm:py-32 bg-black/30">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold text-white text-glow" data-key="devs_title">Meet the Developers</h3>
+                    <p class="text-gray-400 mt-2" data-key="devs_subtitle">The minds behind Koban.</p>
+                </div>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                    <!-- Perfil Dev 1 -->
+                    <div class="dev-profile-card">
+                        <div class="dev-banner" style="background-image: url('https://i.pinimg.com/originals/0e/98/44/0e9844465b3cdce0a0611850a07b7457.gif'); background-size: cover; background-position: center;"></div>
+                        <div class="p-4">
+                            <div class="dev-avatar-wrapper">
+                                <img src="https://i.pinimg.com/736x/e8/a0/7a/e8a07ad117298a5e32dba3f36da01f13.jpg" alt="Developer 1 Avatar" class="dev-avatar">
+                                <div class="status-dot"></div>
+                            </div>
+                            <h4 class="text-2xl font-bold mt-2 text-white">ryu</h4>
+                            <div class="text-sm text-gray-400 flex items-center gap-2 flex-wrap -mt-1">
+                                <span>ryuzeen._</span>
+                                <span>•</span>
+                                <span>Full Stack Dev</span>
+                            </div>
+                            <hr class="border-gray-700 my-4">
+                            <div>
+                                <h5 class="font-bold text-xs uppercase text-gray-400" data-key="dev1_about_title">About Me</h5>
+                                <p class="text-sm text-gray-300 mt-1" data-key="dev1_about_desc">Lead developer responsible for the features and the software.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Perfil Dev 2 -->
+                    <div class="dev-profile-card">
+                        <div class="dev-banner" style="background-image: url('https://i.pinimg.com/originals/fa/46/4b/fa464bf585cc8dbbf1e9c60e38682473.gif'); background-size: cover; background-position: center;"></div>
+                        <div class="p-4">
+                            <div class="dev-avatar-wrapper">
+                                <img src="https://i.pinimg.com/736x/38/c5/1d/38c51d05855a5281c2109dbdf6688276.jpg" alt="Developer 2 Avatar" class="dev-avatar">
+                                <div class="status-dot"></div>
+                            </div>
+                            <h4 class="text-2xl font-bold mt-2 text-white" data-key="dev2_name">stez</h4>
+                            <div class="text-sm text-gray-400 flex items-center gap-2 flex-wrap -mt-1">
+                                <span>stezsz</span>
+                                <span>•</span>
+                                <span>Backend Developer</span>
+                            </div>
+                            <hr class="border-gray-700 my-4">
+                            <div>
+                                <h5 class="font-bold text-xs uppercase text-gray-400" data-key="dev2_about_title">About Me</h5>
+                                <p class="text-sm text-gray-300 mt-1" data-key="dev2_about_desc">Handles authentication and helps with other tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Seção de Download -->
-        <section id="download" class="py-20 sm:py-32 bg-black/30">
+        <section id="download" class="py-20 sm:py-32">
             <div class="container mx-auto px-6 text-center">
                  <h3 class="text-4xl font-bold text-white text-glow" data-key="download_title">Ready to start?</h3>
                  <p class="text-gray-400 mt-4 mb-8 max-w-xl mx-auto" data-key="download_subtitle">The download is available on our Discord server. Join the community to download and stay up to date with the latest news.</p>
@@ -298,6 +387,7 @@
                 'pt': {
                     'page_title': 'Koban 小判 - Aumente sua Experiência em Ananta',
                     'nav_features': 'Recursos',
+                    'nav_devs': 'Devs',
                     'hero_title': 'KOBAN 小判',
                     'hero_subtitle': 'A ferramenta definitiva para desbloquear seu verdadeiro potencial em Ananta.',
                     'hero_button': 'Download',
@@ -309,6 +399,13 @@
                     'feature2_desc': 'Melhore sua precisão com a assistência de mira. Configure para um auxílio sutil ou um travamento de alvo preciso.',
                     'feature3_title': 'Fov Changer',
                     'feature3_desc': 'Ajuste seu campo de visão (FOV) para uma perspectiva mais ampla, ideal para identificar oponentes nos cantos da tela.',
+                    'devs_title': 'Conheça os Desenvolvedores',
+                    'devs_subtitle': 'As mentes por trás do Koban.',
+                    'dev1_about_title': 'SOBRE MIM',
+                    'dev1_about_desc': 'Desenvolvedor principal responsável pelas funções e pelo software.',
+                    'dev2_name': 'stez',
+                    'dev2_about_title': 'SOBRE MIM',
+                    'dev2_about_desc': 'Responsável pela autenticação e auxilia em outras tarefas.',
                     'download_title': 'Pronto para começar?',
                     'download_subtitle': 'O download está disponível em nosso servidor do Discord. Junte-se à comunidade para baixar e ficar por dentro das novidades.',
                     'download_button': 'Acessar o Discord',
@@ -321,6 +418,7 @@
                 'en': {
                     'page_title': 'Koban 小判 - Enhance Your Ananta Experience',
                     'nav_features': 'Features',
+                    'nav_devs': 'Devs',
                     'hero_title': 'KOBAN 小判',
                     'hero_subtitle': 'The ultimate tool to unlock your true potential in Ananta.',
                     'hero_button': 'Download',
@@ -332,6 +430,13 @@
                     'feature2_desc': 'Improve your accuracy with aim assistance. Configure it for subtle help or precise target locking.',
                     'feature3_title': 'Fov Changer',
                     'feature3_desc': 'Adjust your field of view (FOV) for a wider perspective, ideal for spotting opponents in the corners of your screen.',
+                    'devs_title': 'Meet the Developers',
+                    'devs_subtitle': 'The minds behind Koban.',
+                    'dev1_about_title': 'ABOUT ME',
+                    'dev1_about_desc': 'Lead developer responsible for the features and the software.',
+                    'dev2_name': 'stez',
+                    'dev2_about_title': 'ABOUT ME',
+                    'dev2_about_desc': 'Handles authentication and helps with other tasks.',
                     'download_title': 'Ready to start?',
                     'download_subtitle': 'The download is available on our Discord server. Join the community to download and stay up to date with the latest news.',
                     'download_button': 'Access Discord',
